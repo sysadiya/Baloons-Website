@@ -1,0 +1,137 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title> 
+  <link type="text/css" rel="stylesheet" href="../css/baloons.css">
+          <style>
+                table,th,td {
+                  border : 1px solid black;
+                  border-collapse: collapse;
+                        }
+                th,td {
+                  padding: 5px;
+                    }  
+          </style>
+
+    <style>  
+      tr :hover{
+      background-color: lightblue;
+  }
+  </style>
+
+       <script>
+                function clickCounter() {
+                  if (typeof(Storage) !== "undefined") {
+                    if (localStorage.clickcount) {
+                      localStorage.clickcount = Number(localStorage.clickcount)+1;
+                    } else {
+                      localStorage.clickcount = 1;
+                    }
+                    document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+                  } else {
+                    document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+                  }
+                }
+
+    /*This is the web worker*/    
+    var w;
+    function startWorker() {
+      if(typeof(Worker) !== "undefined") {
+        if(typeof(w) == "undefined") {
+          w = new Worker("../js/demo_workers.js");
+        }
+        w.onmessage = function(event) {
+          document.getElementById("result1").innerHTML = event.data;
+        };
+      } else {
+        document.getElementById("result1").innerHTML = "Sorry, your browser does not support Web Workers...";
+      }
+    }
+
+    function stopWorker() { 
+      w.terminate();
+      w = undefined;
+    }
+  </script>
+  </head>
+
+    <body>
+        <h1>About</h1>
+        <ul class="navigation">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="balloonsGreetings.html">Greetings</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact_us.html">Contact us</a></li>           
+          <li><a href="ballooncanvas.html">Balloons Game</a></li>  
+          <li><a href="image_gallery.html">Image Gallery</a></li>
+          <li><a href="../Balloon-ideas/ideas.html">Ideas</a></li>
+        </ul>
+
+        <h3>Manufacturing</h3>
+
+        <p>Our manufacturing division is staffed by a team of certified balloon engineers with combined balloon experience of more than 50 years.</p>
+
+        <p>We make all kinds of balloons, including: 
+          <ul>
+            <li>Party balloons</li>
+            <li>Helium-filled balloons</li>
+            <li>Hot-air balloons.</li>
+          </ul>
+        </p>
+
+        <p style="font-size: 2em;">Click on a title to display Balloon's information with pricing.</p>
+    <p id='showB'></p>
+    <table id="demo"></table>
+    
+    <script>
+    var x,xmlhttp,xmlDoc
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "balloons_catalog.xml", false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML; 
+    x = xmlDoc.getElementsByTagName("B");
+    var table="<tr><th>BALLOON'S TYPE</th><th>PRICE</th></tr>";
+    for (i = 0; i < x.length; i++) { 
+      table += "<tr onclick='displayB(" + i + ")'><td>";
+      table += x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+      table += "</td><td>";
+      table +=  x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
+      table += "</td></tr>";
+    }
+
+    document.getElementById("demo").innerHTML = table;
+    
+    function displayB(i) {
+      document.getElementById("showB").innerHTML =
+      "Country: " +
+      x[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue +
+      "<br>Title: " +
+      x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+      "<br>price: " + 
+      x[i].getElementsByTagName("PRICE")[0].childNodes[0].nodeValue;
+    }
+    </script>
+
+<!--below is the click counter-->
+<p><button onclick="clickCounter()" type="button">Click me!</button></p>
+<div id="result"></div>
+<p>Click the button to see the counter increase.</p>
+<p>Close the browser tab (or window), and try again, and the counter will continue to count (is not reset).</p>
+
+<!--this is a web worker-->
+<p>Count numbers: <output id="result1"></output></p>
+<button onclick="startWorker()">Start Worker</button> 
+<button onclick="stopWorker()">Stop Worker</button>
+
+<p><strong>Note:</strong> Here  Web Workers is used for the implementation of the counter.</p>
+
+   
+</body>
+</html>
+
+
+

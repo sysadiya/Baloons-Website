@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>WEBSITE FOR BALOONS</title>
+<link type="text/css" rel="stylesheet" href="css/baloons.css">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+crossorigin="">
+</script>
+<style> #map { height: 180px; } </style>
+</head>
+<body>
+    <header></header>
+<nav>
+    <h1 style="font-size:2.25rem;">Balloons Ltd.</h1>
+        <ul class="navigation">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="HTML\balloonsGreetings.html">Greetings</a></li>
+          <li><a href="HTML\services.html">Services</a></li>
+          <li><a href="HTML\about.html">About us</a></li>
+          <li><a href="HTML\contact_us.html">Contact us</a></li> 
+          <li><a href="HTML\ballooncanvas.html">Balloons Game</a></li> 
+          <li><a href="HTML\image_gallery.html">Image Gallery</a></li>
+          <li><a href="../Balloon-ideas/ideas.html">Ideas</a></li> 
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>What We Do</h2>
+            
+    <p>We make bespoke balloons of all shapes and sizes, for all occasions and purposes</p>
+
+    <p>From <em>helium-filled party balloons</em> to <em>hot-air balloons</em>,
+        we have it covered. So, whether you are celebrating a birthday or flying
+        across the channel, give us a call!</p>
+      </article>  
+
+    
+      
+    <h2>Who We Are</h2>
+    
+<p> We are a small team of dedicated professionals that are mad about balloons.</p>
+
+<p>Our engineers are all  <abbr title="Bespoke Balloon Engineers Institute">BBEI</abbr>
+    accredited and are highly experienced in all
+    things related to the balloon industry. </p>
+
+
+
+    <h2>Where To Find Us</h2>
+
+    <p>Our workshop and showroom are located in Northampton Square, London.
+        <strong>Visits are by appointment only</strong>, so please give us a
+        call or send us an email before you come to see us.</p>
+       
+        <section class="transition-links">
+            <a class="contactlink" href="HTML/contact_us.html" target="_blank">Get in touch with our sales team for more details</a>
+         </section>
+ 
+    </main>
+
+<br>
+<br>
+
+
+<div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+
+
+        var marker = L.marker([51.5, -0.09]).addTo(map);
+
+        var circle = L.circle([51.508, -0.11], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+
+
+        var polygon = L.polygon([
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047]
+        ]).addTo(map);
+
+
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        circle.bindPopup("I am a circle.");
+        polygon.bindPopup("I am a polygon.");
+
+
+        var popup = L.popup()
+            .setLatLng([51.513, -0.09])
+            .setContent("I am a standalone popup.")
+            .openOn(map);
+
+
+            function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+                     }
+
+
+map.on('click', onMapClick);
+
+var popup = L.popup();
+
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+                     }
+
+                     
+map.on('click', onMapClick);
+
+    </script>
+
+
+
+
+    </body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link type="text/css" rel="stylesheet" href="../css/baloons.css">
+<body>
+
+  <h1>IMAGE GALLERY FOR BALLOONS</h1>
+        <ul class="navigation">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="balloonsGreetings.html">Greetings</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact_us.html">Contact us</a></li>  
+          <li><a href="ballooncanvas.html">Balloons Game</a></li>  
+          <li><a href="image_gallery.html">Image Gallery</a></li>
+          <li><a href="../Balloon-ideas/ideas.html">Ideas</a></li> 
+        </ul>
+
+    <div class="w3-container">
+        <h2>Balloons Image Gallery</h2>
+        <p style="font-size: 2em;"  >Click on the different Balloon images below to get a bigger Image:</p>
+      </div>
+      
+      <div class="w3-row-padding">
+        <div class="w3-col s3 w3-container">
+        <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('helium_balloons');">
+          <img src="helium_balloons.jpg" alt="helium_balloons" style="width:60%">
+        </a>
+        </div>
+        <div class="w3-col s3 w3-container">
+          <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('hotAir_balloon');">
+            <img src="hotAir_balloon.jpg" alt="hotAir_balloon" style="width:70%">
+          </a>
+        </div>
+        <div class="w3-col s3 w3-container">
+          <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('modelling_balloon');">
+            <img src="modelling_balloon.jpg" alt="modelling_balloon" style="width:50%">
+          </a>
+        </div>
+        <div class="w3-col s3 w3-container">
+          <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Toy_balloons');">
+            <img src="Toy_balloons.jpg" alt="Toy_balloons" style="width:50%">
+          </a>
+        </div>
+      </div><br>
+      
+      <div id="helium_balloons" class="picture w3-display-container" style="display:none">
+        <img src="helium_balloons.jpg" alt="helium_balloons" style="width:28%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">helium_balloons</div>
+      </div>
+      
+      <div id="hotAir_balloon" class="picture w3-display-container" style="display:none">
+        <img src="hotAir_balloon.jpg" alt="hotAir_balloon" style="width:30%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">hotAir_balloon</div>
+      </div>
+      
+      <div id="modelling_balloon" class="picture w3-display-container" style="display:none">
+        <img src="modelling_balloon.jpg" alt="modelling_balloon" style="width:30%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">modelling_balloon</div>
+      </div>
+      
+      <div id="Toy_balloons" class="picture w3-display-container" style="display:none">
+        <img src="Toy_balloons.jpg" alt="Toy_balloons" style="width:25%">
+        <span onclick="this.parentElement.style.display='none'" 
+        class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+        <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Toy_balloons</div>
+      </div>
+      
+      <script>
+      function openImg(imgName) {
+        var i, x;
+        x = document.getElementsByClassName("picture");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        document.getElementById(imgName).style.display = "block";
+      }
+      </script>
+      
+</body>
+</html> 

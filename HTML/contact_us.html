@@ -1,0 +1,157 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+            <title>Contact_Us</title> 
+            <<link type="text/css" rel="stylesheet" href="../css/baloons.css">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0">
+            <meta charset="utf-8" />
+            <title>Form Validation</title>
+            <link rel="stylesheet" href="../css/form.css" />
+            <meta charset="UTF-8">
+            <meta charset="UTF-8">
+            <title>Geolocation</title>
+
+        <style>
+                body{
+                    font-family: sans-serif;
+                    background-color: yellowgreen;
+                    font-size: small;
+                    }
+
+                    #googleMap
+                    {
+                        height:600px;
+                        width:100%;
+                        border: solid .8em;
+                        background-color: brown;
+                        
+                    }
+        </style>
+        
+</head>
+
+    <body>
+        <h1 style="font-size:2.25rem;">Contact Us</h1>
+        <ul class="navigation">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="balloonsGreetings.html">Greetings</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="contact_us.html">Contact us</a></li>                 
+                <li><a href="ballooncanvas.html">Balloons Game</a></li> 
+                <li><a href="image_gallery.html">Image Gallery</a></li> 
+                <li><a href="../Balloon-ideas/ideas.html">Ideas</a></li>
+        </ul>
+
+      <h2>Contact us</h2>
+
+      <p> Please feel free to <a href = "mailto:email@example.com">send us an email</a>  if you would like to know more about our products</p>
+
+      <div class="page-container">
+
+        <h1>PLEASE ENTER YOUR DETAILS</h1>
+
+        <form id="myForm" action="" novalidate>
+
+            <div class="form-control">
+                <label for="fullName">Your full name</label>
+                <input required id="fullName" type="text" name="full_name" />
+                <div class="field-error"></div>
+            </div>
+
+
+            <div class="form-control">
+                <label for="emailAddress">Your email</label>
+                <input required id="emailAddress" type="email" name="email_address" />
+                <div class="field-error"></div>
+            </div>
+
+
+            <div>
+                <div class="form-control">
+                      <label for="age">Your age</Label>
+                      <input type="number" name="age" id="age" min="1" max="150">
+                      <div class="field-error"></div>
+            </div>
+
+
+            <div>
+                <div class="form-control">
+                       <label for="msg">Leave a short message</Label>
+                        <textarea id="msg" name="msg"></textarea>                 
+                      <div class="field-error"></div>
+            </div>
+            
+
+             <input type="submit" value="Go!" />
+
+        </form>
+    </div>
+    <script defer src="../js/form.js"></script>
+    <hr>
+
+    <p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Click Here</button>
+
+<p id="para">Click the button to get your position.</p><!--changes to show lon/lat-->
+    <button class="loc" onclick="getLocation()">Press to see the map and location</button>
+    <div id="googleMap"></div>
+
+
+<script src="http://maps.google.com/maps/api/js"></script>
+<script>
+var x = document.getElementById("para");
+
+function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    } else { 
+                        
+                        x.innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                    }
+
+function showPosition(position) 
+                    {
+                                //returns the coords to para assigned to x
+                                x.innerHTML = "Latitude: " + position.coords.latitude + 
+                                "<br>Longitude: " + position.coords.longitude;
+
+
+
+                    //Add marker to map
+                    lat = position.coords.latitude;
+                                lon = position.coords.longitude;
+                                latlon = new google.maps.LatLng(lat, lon)
+
+                                var myOptions = {
+                                    zoom:14,
+                                    center:latlon,
+                                    mapTypeId:google.maps.MapTypeId.ROADMAP,
+                                    mapTypeControl:false,
+                                    navigationControlOptions:{
+                                    style:google.maps.NavigationControlStyle.SMALL}
+                                }
+                            
+                                //new map and marker
+                                var map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+                                var marker = new google.maps.Marker({
+                                    position:latlon,
+                                    map:map,//add marker to map 
+                                    title:"You are here!"
+                                });
+
+
+                    }
+</script>
+   
+</body>
+
+</html>
+
+
+
+       
+

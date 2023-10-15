@@ -1,0 +1,160 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color:#555;
+    background-color: beige;
+}
+
+
+h1{ 
+    color: black;
+    font-style: italic;
+    size: 30px;
+    text-align: center;
+    padding: 10px;
+    animation-name: heading;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    border-radius: 20px;
+}
+
+
+
+@keyframes heading{
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    75% {background-color: green;}
+    100% {background-color:red;}
+}
+
+
+   
+
+h2
+{
+    font-style:italic;
+    color:#907f;
+    font-size:1.5em;
+   /* font-family:Arial, Helvetica, sans-serif;*/
+   background-color:#f0e6f5;
+   padding:.5 .5;
+   
+}
+
+
+p{
+    color: #555;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+p ,h2{
+    
+    font-family:Arial, Helvetica, sans-serif;
+
+     }
+
+     em{
+        font-style: normal;
+        font-weight: bold;
+     }
+
+     strong{
+        font-weight: normal;
+        font-size: italic;
+     }
+
+     h2, h3, h4 {
+        color: #99007f;
+        }
+        
+        ul{
+            list-style-type: square;
+        }
+
+        ol{
+            list-style-type: lower-alpha;
+        }
+        
+        .introduction
+        {
+            font-size:  1.5 em;
+            color: #72005f ;
+            font-style:italic;
+        }
+
+        a:list{
+            color:#609;
+        }
+       
+
+        a:visited{
+            color:#d4eb6b;
+        }
+
+        a:hover{
+            color:#390;
+        }
+
+.navigation{    
+    
+    list-style-type: none;
+    margin:0; 
+    padding: 0 ;
+    background-color: #D9EECE;
+    border: #4c0072;    
+    border-right: solid 1px;
+    border-bottom: solid 1px;
+    border-left: solid 1px;
+
+}
+
+@media screen and (min-width:30em){
+    .navigation{
+     display:flex;
+    }
+}
+
+.navigation a {
+    text-decoration: none;
+    color:#226800;
+    font-size:bold;
+    /* other styles omitted... */
+    display: block;
+    padding: 1em 1em 1em 1em;
+}
+
+.navigation a:hover {
+    background-color: #C4E8B1
+}
+.btntrigger{
+    background: #4B1871;
+    color: white;
+    height: 100px;
+    width:50%;
+    border-radius: 20px;
+    font-size: 20px;
+}
+.btntrigger:target{
+    background: #000;
+}
+.contactlink{
+    font-size: 20px;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    background-color: #FF944D;
+    border-radius: 8px;
+}
+a:hover {
+    background-color: #D65600;
+    color: #fff;
+}
+
+.target{
+    display: flex;
+    justify-content: center;
+    font-size:30px;
+    color: #000;
+}
+

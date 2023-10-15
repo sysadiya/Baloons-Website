@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Services</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="transitions.css" />
+  <link type="text/css" rel="stylesheet" href="../css/baloons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $("div").last().css("background-color", "yellow");
+});
+</script>
+</head>
+
+<body>
+  <h1>Balloons Ltd.</h1>
+  <ul class="navigation">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="balloonsGreetings.html">Greetings</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="contact_us.html">Contact us</a></li>
+
+    <li><a href="ballooncanvas.html">Balloons Game</a></li>
+    <li><a href="image_gallery.html">Image Gallery</a></li>
+    <li><a href="../Balloon-ideas/ideas.html">Ideas</a></li>
+  </ul>
+
+  <h2>Services</h2>
+
+
+  <div style="border: 1px solid rgb(0, 0, 0);">
+    <p class="introduction">We provide a wide range of services including balloon repair, restoration and customisation.
+      Whatever your balloon needs are, our team of expert engineers are on here to help.
+    <p>
+
+
+    <h3>Repair</h3>
+
+    <div style="border: 1px solid rgb(0, 0, 0);">
+      <p>We repair all forms of balloon damage including holes, tears and lack of air. So don't throw out that old
+        balloon, bring it to us and let it live to see another day!</p>
+        </div>
+
+      <h3>Restoration</h3>
+
+        <div style="border: 1px solid rgb(0, 0, 0);">
+      <p>Do you have a balloon that has seen better days? Using state of the art balloon technology, we can restore your
+        once-loved balloon to all it's former glory.</p>
+        </div>
+
+      <h3>Customisation</h3> <!--error started h3, ended with h4, still appears ok-->
+
+      <div style="border: 1px solid rgb(0, 0, 0);">
+      <P>Want to stand out from the crowd? Provide us with a design and we will apply it to whatever type of balloon you
+        are purchasing.</p>
+      </div>
+
+     <div style="border: 1px solid rgb(0, 0, 0);">
+      <p>If you are not the creative type, our team of designers can create a unique design for you that reflects your
+        personality.</p>
+     </div>
+
+
+      <h1 style="margin-bottom: 20px;">How the customisation process works</h1>
+
+      <main>
+        <!-- A simple transition applied to <a> selector in the CSS -->
+        <section class="transition-links">
+          <a class="contactlink" href="contact_us.html" target="_blank">Get in touch with our sales team for more
+            details</a>
+        </section>
+
+        <section class="transition-classes">
+          <!-- Transition on classes - This button & target will be manipulated with the changeTarget function, 
+                    when triggered by the button and 'heard' by the eventlistener-->
+          <center>
+            <button class="btntrigger">Click here to know how our customisation process works</button>
+          </center>
+
+          <div class="target">
+            <!-- I am the target element!-->
+            <ol>
+              <li>You choose or create a design. </li>
+              <li>You choose the balloon(s) you want. </li>
+              <li>We make the balloons for you.</li>
+            </ol>
+          </div>
+          </section>
+      </main>
+
+
+      <script>
+        //FIRST SECTION
+        const transition = document.querySelector('.transition-links');
+        transition.addEventListener('transitionend', () => {
+          //console.log('Transition ended');
+          //alert('transition ended');
+          document.getElementsByTagName("a")[0].innerHTML = "Transition Ended!";
+        });
+        const btntrigger = document.querySelector('.btntrigger');
+        const target = document.querySelector('.target');
+
+        btntrigger.addEventListener('click', changeTarget);
+
+        function changeTarget() {
+          target.classList.toggle('active-target');
+          /*CLASSLIST The classList property is read-only, 
+          but you can use the methods to add, toggle or remove CSS classes from the list:
+          (https://www.w3schools.com/jsref/prop_element_classlist.asp)
+          this.innerHTML = "transitionend event occured - The transition has completed";*/
+          this.innerHTML = "Below is the list of how our customisation process works";
+          this.style.backgroundColor = "pink";
+        }
+
+      </script>
+
+</body>
+
+</html>
